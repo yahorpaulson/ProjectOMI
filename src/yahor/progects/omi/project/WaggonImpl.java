@@ -26,6 +26,8 @@ public abstract class WaggonImpl extends SchienenfahrzeugImpl implements Waggon 
         return sitzPlatz;
     }
 
+
+
     @Override
     public void printInfoWaggon() {
         super.printInfoSchienenfahrzeug();

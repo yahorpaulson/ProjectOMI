@@ -37,6 +37,7 @@ public class Main {
         zug1.addSchienenFahrzeug(DIESEL);
         zug1.addSchienenFahrzeug(Waggon1);
         zug1.printInfoZug();
+        System.out.println(zug1.getTrainWeight());
 
 
 

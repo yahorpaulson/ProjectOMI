@@ -47,6 +47,17 @@ public abstract class Zug <T> {
         return trainID;
     }
 
+    /**
+     * Method returns weight of the whole train
+     */
+
+    public int getTrainWeight(){
+        int trainWeight = 0;
+        for (int i = 0; i < zugs.size(); i++){
+            trainWeight += ((Schienenfahrzeug) zugs.get(i)).getMaxGewicht();
+        }
+        return trainWeight;
+    }
 
     public void printInfoZug(){
 
