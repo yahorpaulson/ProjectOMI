@@ -6,7 +6,7 @@ public abstract class LokomotiveImpl extends SchienenfahrzeugImpl implements Lok
     private int bremskraft;
 
     public LokomotiveImpl(int id, String beschreibung, int maxGewicht, int leistung, int zugkraft, int bremskraft) {
-        super(id, beschreibung, maxGewicht);
+        super(beschreibung, maxGewicht);
         this.leistung = leistung;
         this.zugkraft = zugkraft;
         this.bremskraft = bremskraft;
@@ -30,12 +30,17 @@ public abstract class LokomotiveImpl extends SchienenfahrzeugImpl implements Lok
     }
 
 
+    /**
+     * Prints info about Lokomotive
+     */
     @Override
     public void printInfoLokomotive(){
+        System.out.println("******Lokomotive INFO*******");
         super.printInfoSchienenfahrzeug();
-        System.out.println("---Lokomotive---" +
-                "\nLeistung: " + leistung +
+        System.out.println("______Special characteristics_____");
+        System.out.println(
+                "Leistung: " + leistung +
                 "\nZugkraft: " + zugkraft +
-                "\nBremskraft: " + bremskraft);
+                "\nBremskraft: " + bremskraft + "\n");
     }
 }

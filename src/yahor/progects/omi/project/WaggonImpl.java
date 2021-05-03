@@ -6,13 +6,12 @@ public abstract class WaggonImpl extends SchienenfahrzeugImpl implements Waggon 
     int sitzPlatz;
 
     public WaggonImpl(
-            int ID,
             String beschreibung,
             int maxGewicht,
             int sitzKlasse,
             int sitzPlatz
     ) {
-        super(ID, beschreibung, maxGewicht);
+        super(beschreibung, maxGewicht);
         this.sitzKlasse = sitzKlasse;
         this.sitzPlatz = sitzPlatz;
     }
@@ -30,8 +29,10 @@ public abstract class WaggonImpl extends SchienenfahrzeugImpl implements Waggon 
 
     @Override
     public void printInfoWaggon() {
+        System.out.println("*******WAGGON INFO*******");
         super.printInfoSchienenfahrzeug();
-        System.out.println("----SITZ----" + "\n" +
+        System.out.println("______Special characteristics_____");
+        System.out.println(
                 "Sitzklasse: " + getSitzklasse() + "\n" +
                 "Sitzplatz Nr: " + getSitzplatz() + "\n"
         );

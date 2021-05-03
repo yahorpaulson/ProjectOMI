@@ -6,7 +6,7 @@ public abstract class SchienenfahrzeugImpl implements Schienenfahrzeug{
     private int maxGewicht;
     private static int nextID = 0;
 
-    public SchienenfahrzeugImpl(int ID, String beschreibung, int maxGewicht){
+    public SchienenfahrzeugImpl(String beschreibung, int maxGewicht){
         this.schienenID = nextID++;
         this.beschreibung = beschreibung;
         this.maxGewicht = maxGewicht;
@@ -25,11 +25,13 @@ public abstract class SchienenfahrzeugImpl implements Schienenfahrzeug{
         return maxGewicht;
     }
 
-
+    /**
+     * Prints basic info about created Schienenfahrzeug
+     */
     @Override
     public void printInfoSchienenfahrzeug() {
-        System.out.println("----SPECS----" +
-                "\nID: " + getID() +
+        System.out.println(
+                "ID: " + getID() +
                 "\nMaximales Gewicht: " + getMaxGewicht() + " Kg");
     }
 }

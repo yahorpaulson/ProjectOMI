@@ -1,12 +1,16 @@
 package yahor.progects.omi.project;
 
+/**
+ * Created by Yahor Siarheyeu for OMI (AAU Klagenfurt)
+ */
 
 public class Main {
     public static void main(String[] args) {
 
-
-
-        LokomotiveFactory DIESEL = new LokomotiveFactory(
+        /**
+         * Lokomotive
+         */
+        LokomotiveFactory diesel = new LokomotiveFactory(
                 1001,
                 "DIESEL",
                 20000,
@@ -14,30 +18,47 @@ public class Main {
                 7500,
                 10000
         );
-
-        WaggonFactory Waggon1 = new WaggonFactory(
-                1002,
+        /**
+         * Waggons
+         */
+        WaggonFactory waggon1 = new WaggonFactory(
                 "ERSTE KLASSE WAGGON",
                 10000,
                 1,
                 10
         );
-        WaggonFactory Waggon2 = new WaggonFactory(
-                1003,
+        WaggonFactory waggon2 = new WaggonFactory(
                 "ZWEITE KLASSE WAGGON",
                 10000,
                 2,
                 10
         );
 
-        System.out.println(DIESEL.getID());
-        System.out.println(Waggon2.getID());
+        /**
+         * Info
+         */
+        diesel.printInfoLokomotive();
+        waggon2.printInfoWaggon();
 
-        ZugFactory zug1 = new ZugFactory(1, "Zug take 1");
-        zug1.addSchienenFahrzeug(DIESEL);
-        zug1.addSchienenFahrzeug(Waggon1);
+        /**
+         * Trains
+         */
+        ZugFactory zug1 = new ZugFactory("Train take 1");
+        zug1.addSchienenFahrzeug(diesel);
+        zug1.addSchienenFahrzeug(waggon1);
+        zug1.addSchienenFahrzeug(waggon2);
+
+        ZugFactory zug2 = new ZugFactory("Train take 2");
+        zug2.addSchienenFahrzeug(diesel);
+        zug2.addSchienenFahrzeug(waggon1);
+        zug2.addSchienenFahrzeug(waggon2);
+        zug2.deleteSchienenFahrzeug(waggon1);
+        /**
+         * Trains info
+         */
         zug1.printInfoZug();
-        System.out.println(zug1.getTrainWeight());
+        zug2.printInfoZug();
+
 
 
 

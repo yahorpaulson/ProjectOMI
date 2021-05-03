@@ -3,13 +3,14 @@ package yahor.progects.omi.project;
 import java.util.ArrayList;
 
 public abstract class Zug <T> {
-    int trainID;
+    private int trainID;
     String trainName;
+    private static int nextTrainID = 1;
 
     ArrayList<T> zugs;
 
-    public Zug(int ID, String name){
-        this.trainID = ID;
+    public Zug(String name){
+        this.trainID = nextTrainID++;
         this.trainName = name;
         zugs = new ArrayList<>();
     }
@@ -17,7 +18,7 @@ public abstract class Zug <T> {
 
     /**
      * Method adds a new Scheinenfahrzeug in a list that is presented as a train. At the head of the train stands always a Lokomotive:)
-     * @param typeOfSchienenFahrzeug
+     * @param typeOfSchienenFahrzeug shows is it Lokomotive or Waggon
      */
     public void addSchienenFahrzeug(T typeOfSchienenFahrzeug){
         if (zugs.isEmpty()) {
@@ -30,14 +31,13 @@ public abstract class Zug <T> {
     }
 
     /**
-     * Method deletes SchienenFahrzeug with it's index
-     * @param index number of a Schenenfahrzeug
-     * @param zugs bestimmte Zug
+     * Method deletes SchienenFahrzeug with it's type
+     * @param  typeOfSchienenFahrzeug you know what it means:)
      */
 
-    public void deleteSchienenFahrzeug(int index, ArrayList<T> zugs){
-        if(zugs.get(index) != null){
-            zugs.remove(index);
+    public void deleteSchienenFahrzeug(T typeOfSchienenFahrzeug){
+        if(zugs.contains(typeOfSchienenFahrzeug)){
+            zugs.remove(typeOfSchienenFahrzeug);
         } else
             throw new IllegalArgumentException("The Schienenfahrzeug doesn't exist!");
     }
@@ -53,8 +53,8 @@ public abstract class Zug <T> {
 
     public int getTrainWeight(){
         int trainWeight = 0;
-        for (int i = 0; i < zugs.size(); i++){
-            trainWeight += ((Schienenfahrzeug) zugs.get(i)).getMaxGewicht();
+        for (T zug : zugs) {
+            trainWeight += ((Schienenfahrzeug) zug).getMaxGewicht();
         }
         return trainWeight;
     }
@@ -65,7 +65,8 @@ public abstract class Zug <T> {
                 "--- Zug ---" + "\n" +
                 "Zug ID: " + trainID + "\n" +
                 "Zug Name: " + trainName + "\n" +
-                "Anzahl der Fahrzeuge: " + zugs.size()
+                "Anzahl der Fahrzeuge: " + zugs.size() + "\n" +
+                "Höchste Zugsgewicht: " + getTrainWeight()
         );
     }
 }
